@@ -1,0 +1,65 @@
+{% extends 'html/base.html' %}{% load static %} {% block content %}
+<div class="container_two">
+    <div class="top_two">
+        <div class="hiring_two">
+            <h3>WE ARE HIRING :-
+                <div><span class="typing-1"></span></div>
+            </h3>
+        </div>
+    </div>
+    <div class="middle_two">
+        <div class="salesman_two">
+            <img src="{% static 'images/442.jpg' %}" alt="">
+            <div class="text_two">
+                <h1>Salesmen</h1>
+                <a href="#down">Apply Now</a>
+            </div>
+        </div>
+        <div class="marketer_two">
+            <img src="{% static 'images/19197204.jpg' %}" alt="">
+            <div class="text_two">
+                <h1>Medical Representative</h1>
+                <a href="#down">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="down_two" id="down">
+        <h3 id='form'>Why Should We Hire You ?</h3>
+        {% if mass %}
+        <div class="alert alert-warning" role="alert">
+            {{mass}}
+        </div>
+        {% endif %}
+        <form action="/career#form" method="POST">
+            {% csrf_token %} {% if error %}
+            <div class="alert alert-warning" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+            <div class="ds_two">
+                <select name="hiring" class="hiring">
+                <option disabled selected>Select</option>
+                <option value="MARKETER">Marketer</option>
+                <option value="SALESMAN">Medical Representative</option>
+                </select>
+            </div>
+            <div class="fn_two"><input type="text" name="first_name" value="{{value.fn}}" placeholder="First_Name (required)">
+            </div>
+            <div class="ln_two"><input type="text" name="last_name" value="{{value.ln}}" placeholder="Last_Name (required)">
+            </div>
+            <div class="pn_two"><input type="number" name="phone_number" value="{{value.pn}}" placeholder="Phone No. (required)">
+            </div>
+            <div class="e_two"><input type="email" name="email_id" value="{{value.email}}" placeholder="Email ID (required)">
+            </div>
+            <div class="des_two"><textarea name="description" value="{{value.des}}" id="" cols="30" rows="5" placeholder="Description"></textarea>
+            </div>
+            <div class="sub_two">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+{% endblock %}

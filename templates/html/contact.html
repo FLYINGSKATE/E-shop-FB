@@ -1,0 +1,61 @@
+{% extends 'html/base.html' %}{% load static %} {% block content %}
+<div class="container_four">
+    <div class="toppy">
+        <div class="bgimg"></div>
+        <div class="text">
+            <h2>Join Us</h2>
+            <h3>We’d love to hear from you.</h3>
+        </div>
+    </div>
+    <div class="down">
+
+        <form action="/contact_us" method="POST">
+            {% csrf_token %}
+            <h2>Send Message</h2>
+            {% if mess %}
+            <div class="alert alert-warning" role="alert">
+                {{mess}}
+            </div>
+            {% endif %} {% if error %}
+            <div class="alert alert-warning" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+            <div class="name">
+                <input type="text" name="name" value="{{value.n}}" placeholder="Enter Name (required)">
+            </div>
+            <div class="phone_num">
+                <input type="number" name="phone_number" value="{{value.pn}}" placeholder="Enter Phone No.">
+            </div>
+            <div class="email">
+                <input type="email" name="email" value="{{value.e}}" placeholder="Enter Email ID (required)">
+            </div>
+            <div class="subject">
+                <input type="text" name="subject" value="{{value.sub}}" placeholder="Enter Subject">
+            </div>
+            <div class="message">
+                <textarea name="message" id="" cols="30" rows="5" value="{{value.mess}}" placeholder="Message"></textarea>
+            </div>
+            <div class="submit">
+                <button type="submit">Send Message</button>
+            </div>
+            <div class="lower_part">
+                <div class="left">
+                    <p>SHOP NO. 3, Hormasji Daruwala Chawl, N.S. Mankikar Road, Chunabhatti (E), Mumbai - 400022 </p>
+                </div>
+                <div class="line"></div>
+                <div class="rigth">
+                    <div class="up">
+                        <h4>For Product Partner:-</h4>
+                        <h4>For Account:-</h4>
+                    </div>
+                    <div class="down_two">
+                        <h4><i class='fas fa-phone' style='font-size:15px'></i>+91-7021568199</h4>
+                        <h4><i class='fas fa-phone' style='font-size:15px'></i>+91-9769102323</h4>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
