@@ -1,0 +1,1 @@
+web: gunicorn dmarkpharmacy.wsgi --log-file -
