@@ -1,3 +1,3 @@
-web: gunicorn dmarkpharmacy.wsgi:application --log-file - --log-level debug
+web: gunicorn d_mark.wsgi:application --log-file - --log-level debug
 python manage.py collectstatic --noinput
 manage.py migrate
